@@ -5,7 +5,10 @@ configMapGenerator:
 - files:
   - config.js
   name: web-portal
-
+  
+generatorOptions:
+  disableNameSuffixHash: true
+  
 resources:
   - deployment.yaml
   - service.yaml
