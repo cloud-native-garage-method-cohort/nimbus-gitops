@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web-bff
+    app.openshift.io/runtime: nodejs
+    app.kubernetes.io/part-of: nimbus-kompare
+  name: web-bff
+spec:
+  selector:
+    matchLabels:
+      app: web-bff
+  template:
+    metadata:
+      labels:
+        app: web-bff
+    spec:
+      volumes:
+        - name: config-volume
+          configMap:
+            name: web-bff
+      containers:
+      - image: quay.io/linxianer12/bootcamp-be:latest
+        name: web-bff
+        volumeMounts: # Using Subpath to prevent overwrite whole directory
+        - name: config-volume
+          mountPath: /home/node/dist/config/config.yaml  # Abosolute path for created config.js file
+          readOnly: false
+          subPath: config.yaml
+        - name: config-volume
+          mountPath: /home/node/dist/config/kafka.yaml # Abosolute path for created config.js file
+          readOnly: false
+          subPath: kafka.yaml 
+        ports:
+          - containerPort: 8080
+            name: http
+        resources:
+          requests:
+            cpu: 50m
+            memory: 128Mi
+          limits:
+            cpu: 50m
+            memory: 128Mi

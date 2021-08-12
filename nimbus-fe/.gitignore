@@ -31,4 +31,4 @@
 **/.env.production.local
 
 # vercel
-.vercel
+**/.vercel

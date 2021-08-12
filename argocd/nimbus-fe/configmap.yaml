@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: web-portal
+data:
+  config.js: |-
+    window.REACT_APP_BFF_SERVICE_URL='https://ibm.com'
+    window.REACT_APP_MOCK='https://redhat.com'

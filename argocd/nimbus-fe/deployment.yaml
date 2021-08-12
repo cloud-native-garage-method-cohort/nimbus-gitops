@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web-portal
+    app.openshift.io/runtime: nginx
+    app.kubernetes.io/part-of: nimbus-kompare
+  name: web-portal
+spec:
+  selector:
+    matchLabels:
+      app: web-portal
+  template:
+    metadata:
+      labels:
+        app: web-portal
+    spec:
+      volumes:
+        - name: config-volume
+          configMap:
+            name: web-portal 
+      containers:
+      #/home/node/dist/config
+      - image: quay.io/linxianer12/bootcamp-fe:latest
+        name: web-portal
+        volumeMounts: # Using Subpath to prevent overwrite whole directory
+        - name: config-volume
+          mountPath: /usr/share/nginx/html/config.js # Abosolute path for created config.js file
+          readOnly: false
+          subPath: config.js # reference to Key in ConfigMap
+        ports:
+          - containerPort: 8080
+            name: http
+        resources:
+          requests:
+            cpu: 50m
+            memory: 128Mi
+          limits:
+            cpu: 50m
+            memory: 128Mi
