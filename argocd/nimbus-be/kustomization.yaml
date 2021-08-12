@@ -8,3 +8,6 @@ resources:
 
 images:
 - name: quay.io/linxianer12/be
+- name: quay.io/linxianer12/bootcamp-be
+  newName: quay.io/linxianer12/bootcamp-be
+  newTag: 0.0.1
