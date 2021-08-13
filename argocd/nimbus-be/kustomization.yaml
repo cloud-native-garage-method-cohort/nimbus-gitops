@@ -12,4 +12,4 @@ images:
 - name: quay.io/linxianer12/be
 - name: quay.io/linxianer12/bootcamp-be
   newName: quay.io/linxianer12/bootcamp-be
-  newTag: 0.0.26-SNAPSHOT.0
+  newTag: 0.0.27-SNAPSHOT.0
