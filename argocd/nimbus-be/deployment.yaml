@@ -22,6 +22,26 @@ spec:
       containers:
       - image: quay.io/linxianer12/bootcamp-be:latest
         name: web-bff
+        envFrom:
+        - secretRef:
+            name: web-bff
+        env:
+        - name: DB_HOST 
+          valueFrom:
+            configMapKeyRef:
+              name: web-bff           
+              key: DB_HOST 
+        - name: DB_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: web-bff           
+              key: DB_PORT 
+        - name: DB_HOST 
+          valueFrom:
+            configMapKeyRef:
+              name: web-bff           
+              key: DB_HOST 
+    
         # volumeMounts: # Using Subpath to prevent overwrite whole directory
         # - name: config-volume
         #   mountPath: /home/node/dist/config/config.yaml  # Abosolute path for created config.js file
