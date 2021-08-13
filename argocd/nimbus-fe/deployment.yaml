@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: web-portal
-    app.openshift.io/runtime: nginx
+    app.openshift.io/runtime: js
     app.kubernetes.io/part-of: nimbus-kompare
   name: web-portal
 spec:
