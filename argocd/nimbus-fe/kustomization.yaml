@@ -10,9 +10,12 @@ generatorOptions:
   disableNameSuffixHash: true
   
 resources:
-  - deployment.yaml
-  - service.yaml
-  - route.yaml
+- deployment.yaml
+- service.yaml
+- route.yaml
 
 images:
-  - name: quay.io/linxianer12/fe
+- name: quay.io/linxianer12/bootcamp-fe
+  newName: quay.io/linxianer12/bootcamp-fe
+  newTag: 0.1.3-SNAPSHOT.0
+- name: quay.io/linxianer12/fe
